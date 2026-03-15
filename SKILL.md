@@ -6,9 +6,6 @@ description: >
   This skill can help user: analyze stocks, review a portfolio, scan for new stock ideas,
   get buy/sell ratings, compute support/resistance levels, check insider or Congress trades,
   assess sentiment from Reddit/StockTwits/news, pull analyst ratings, or generate entry/exit price targets.
-  Triggers: stock analysis, portfolio review, stock scanner, financial analysis, buy/sell rating,
-  price target, technical analysis, sentiment analysis, insider trading, Congress trades, stock ideas,
-  swing trade, entry levels, exit levels, support resistance, watchlist, deep dive, stock report.
 ---
 
 # Financial Analysis Skill
