@@ -22,7 +22,7 @@ _project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
-LOGS_DIR = os.path.expanduser("~/.financial-analysis/logs")
+LOGS_DIR = os.path.expanduser("~/.skill-financial-analysis/logs")
 USAGE_LOG = os.path.join(LOGS_DIR, "api_usage.jsonl")
 ERROR_LOG = os.path.join(LOGS_DIR, "error_log.jsonl")
 DAILY_SUMMARY = os.path.join(LOGS_DIR, "daily_summary.json")

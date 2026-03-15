@@ -6,7 +6,7 @@ Run the config initializer to create your API keys file:
 ```bash
 python scripts/api_config.py init
 ```
-This creates `~/.financial-analysis/api_keys.json` with blank entries for every API.
+This creates `~/.skill-financial-analysis/api_keys.json` with blank entries for every API.
 
 ## API Keys — Step by Step
 
@@ -48,7 +48,7 @@ This creates `~/.financial-analysis/api_keys.json` with blank entries for every 
 ### Option A: Edit the config file directly
 ```bash
 # Open the config file
-nano ~/.financial-analysis/api_keys.json
+nano ~/.skill-financial-analysis/api_keys.json
 ```
 Set `"api_key": "your-key-here"` and `"enabled": true` for each API.
 
@@ -108,7 +108,7 @@ pip install yfinance feedparser pandas pandas-ta requests --break-system-package
 
 ## Error Log & Usage Tracking
 
-All API calls are automatically logged to `~/.financial-analysis/logs/`:
+All API calls are automatically logged to `~/.skill-financial-analysis/logs/`:
 
 | File | Contents |
 |------|----------|

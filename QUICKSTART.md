@@ -42,7 +42,7 @@ ln -sf /opt/homebrew/opt/python@3.12/bin/python3.12 /opt/homebrew/bin/python3
 
 ```bash
 git clone <your-repo-url>
-cd financial-analysis
+cd skill-financial-analysis
 ```
 
 ## Step 2 — Run the setup script
@@ -55,7 +55,7 @@ chmod +x setup.sh
 This does three things:
 1. Creates a Python virtual environment at `.venv/` using your system Python
 2. Installs all dependencies from `requirements.txt` (yfinance, pandas, feedparser, requests, etc.)
-3. Initializes the API config file at `~/.financial-analysis/api_keys.json`
+3. Initializes the API config file at `~/.skill-financial-analysis/api_keys.json`
 
 If `pandas-ta` fails to install, the script continues — it's optional (used for local technical analysis computations). Everything else works without it.
 
@@ -101,7 +101,7 @@ Seeking Alpha (RSS)            FREE     No     READY        30/min              
 Open the config file:
 
 ```bash
-nano ~/.financial-analysis/api_keys.json
+nano ~/.skill-financial-analysis/api_keys.json
 ```
 
 For each API you want to activate, fill in the `api_key` field and change `enabled` to `true`. The file already contains signup URLs for every API.
@@ -118,7 +118,7 @@ Example — activating Finnhub:
 }
 ```
 
-**Your keys are safe.** They're stored at `~/.financial-analysis/api_keys.json` (in your home directory, not in the repo). Running `setup.sh` again or running tests will never overwrite them.
+**Your keys are safe.** They're stored at `~/.skill-financial-analysis/api_keys.json` (in your home directory, not in the repo). Running `setup.sh` again or running tests will never overwrite them.
 
 **Recommended signup order** (all free, all instant):
 
@@ -203,7 +203,7 @@ deactivate
 ## Every time you come back
 
 ```bash
-cd financial-analysis
+cd skill-financial-analysis
 source .venv/bin/activate
 # ... run commands ...
 deactivate
@@ -348,7 +348,7 @@ The sector rotation data feeds into two places: a ±0.5 score modifier in the co
 ## File structure
 
 ```
-financial-analysis/
+skill-financial-analysis/
 ├── setup.sh                         ← One-command setup (venv + deps + config)
 ├── requirements.txt                 ← Pinned Python dependencies
 ├── .gitignore                       ← Keeps .venv/ and logs out of version control
@@ -384,7 +384,7 @@ financial-analysis/
 Config and logs (not in the repo):
 
 ```
-~/.financial-analysis/
+~/.skill-financial-analysis/
 ├── api_keys.json             ← Your API keys (created by setup.sh, never overwritten)
 └── logs/
     ├── api_usage.jsonl       ← Every API call logged with timestamps
@@ -412,7 +412,7 @@ Harmless. Means your system SSL library is older than urllib3 expects. Does not 
 
 **Reset everything:**
 ```bash
-rm -rf .venv ~/.financial-analysis
+rm -rf .venv ~/.skill-financial-analysis
 ./setup.sh
 ```
 

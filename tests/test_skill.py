@@ -98,7 +98,7 @@ def test_config_init():
     assert isinstance(cfg, dict), "Config should be a dict"
     assert "apis" in cfg, "Config should have 'apis' section"
 
-test("Config init creates/updates ~/.financial-analysis/api_keys.json", test_config_init)
+test("Config init creates/updates ~/.skill-financial-analysis/api_keys.json", test_config_init)
 
 
 def test_free_vs_paid_labels():
@@ -460,7 +460,7 @@ def test_daily_summary_generation():
     tracker.record_error("finnhub", "ratings", "429", fallback_api="yfinance", fallback_success=True)
 
     # Generate summary
-    summary_path = Path.home() / ".financial-analysis" / "logs" / "test_summary.json"
+    summary_path = Path.home() / ".skill-financial-analysis" / "logs" / "test_summary.json"
     summary_path.parent.mkdir(parents=True, exist_ok=True)
     tracker.save_daily_summary(str(summary_path))
     assert summary_path.exists(), "Summary file should be created"
@@ -486,7 +486,7 @@ if results["skip"] > 0:
     print("  Skipped tests need either:")
     print("    • pip install yfinance feedparser pandas requests")
     print("    • API keys set up: python scripts/api_config.py init")
-    print("    • Then add keys: ~/.financial-analysis/api_keys.json")
+    print("    • Then add keys: ~/.skill-financial-analysis/api_keys.json")
     print()
 
 if results["fail"] > 0:

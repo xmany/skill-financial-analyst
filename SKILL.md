@@ -37,7 +37,7 @@ pip install yfinance feedparser pandas pandas-ta requests --break-system-package
 ## Architecture Overview
 
 ```
-financial-analysis/
+skill-financial-analysis/
 ├── SKILL.md                          # This file — main instructions
 ├── scripts/
 │   ├── api_config.py                 # API registry, keys, fallback chains
@@ -54,7 +54,7 @@ Every API call flows through `scripts/api_caller.py` which:
 
 1. **Checks rate limits** before calling (per-minute, per-day, per-month)
 2. **Enforces delays** between calls to avoid IP blocks
-3. **Logs every call** to `~/.financial-analysis/logs/api_usage.jsonl`
+3. **Logs every call** to `~/.skill-financial-analysis/logs/api_usage.jsonl`
 4. **On failure**: logs to `error_log.jsonl` and tries the next API in the fallback chain
 5. **On all failures**: returns an error with details of every attempt
 
@@ -225,7 +225,7 @@ Output a comprehensive per-ticker report with all findings. Only recommend trade
 
 When any API call fails, the system:
 
-1. **Logs the error** to `~/.financial-analysis/logs/error_log.jsonl` with timestamp, API, category, and error message
+1. **Logs the error** to `~/.skill-financial-analysis/logs/error_log.jsonl` with timestamp, API, category, and error message
 2. **Tries the fallback** — next API in the chain for that data category
 3. **Logs fallback result** — records which fallback was used and whether it succeeded
 4. If all fallbacks fail, continues with available data and notes the gap in the output
@@ -242,7 +242,7 @@ python scripts/usage_tracker.py errors 30   # Last 30 days
 | 429 Too Many Requests | yfinance | Increase delay to 5s. Reduce batch size. |
 | 429 Rate Limited | Alpha Vantage | 25/day limit hit. Wait or use pandas-ta locally. |
 | 403 Forbidden | SEC EDGAR | Set User-Agent email in config. |
-| API key invalid | Any | Check `~/.financial-analysis/api_keys.json` |
+| API key invalid | Any | Check `~/.skill-financial-analysis/api_keys.json` |
 | Connection timeout | Any | Automatic fallback triggers. Check internet. |
 
 ## Usage Reports & Paid Tier Recommendations

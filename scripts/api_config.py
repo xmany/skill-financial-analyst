@@ -8,8 +8,8 @@ Usage:
 import json, os, sys
 from pathlib import Path
 
-DEFAULT_CONFIG_PATH = os.path.expanduser("~/.financial-analysis/api_keys.json")
-LOGS_DIR = os.path.expanduser("~/.financial-analysis/logs")
+DEFAULT_CONFIG_PATH = os.path.expanduser("~/.skill-financial-analysis/api_keys.json")
+LOGS_DIR = os.path.expanduser("~/.skill-financial-analysis/logs")
 
 # ─── API REGISTRY ────────────────────────────────────────────
 # Every API the skill uses, with tier/cost/limit metadata
