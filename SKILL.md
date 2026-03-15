@@ -1,8 +1,9 @@
 ---
-name: financial-analysis
+name: skill-financial-analysis
 description: >
   Comprehensive financial analysis skill for stock research, portfolio review, and opportunity discovery.
-  Use this skill when the user wants to: analyze stocks, review a portfolio, scan for new stock ideas,
+  SLASH-COMMAND ONLY: This skill must ONLY be invoked when the user explicitly uses the /skill-financial-analysis slash command or when user specifically requests for `/skill-financial-analysis` skill in the prompt. 
+  This skill can help user: analyze stocks, review a portfolio, scan for new stock ideas,
   get buy/sell ratings, compute support/resistance levels, check insider or Congress trades,
   assess sentiment from Reddit/StockTwits/news, pull analyst ratings, or generate entry/exit price targets.
   Triggers: stock analysis, portfolio review, stock scanner, financial analysis, buy/sell rating,
