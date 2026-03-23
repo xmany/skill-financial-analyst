@@ -408,7 +408,11 @@ def seeking_alpha_ratings(ticker):
         headers={"X-RapidAPI-Key": key, "X-RapidAPI-Host": "seeking-alpha.p.rapidapi.com"},
         timeout=10,
     )
+    if r.status_code in (403, 429):
+        raise ValueError(f"Seeking Alpha returned {r.status_code} — access denied or rate limited")
     r.raise_for_status()
+    if not r.text.strip():
+        raise ValueError(f"Empty response from Seeking Alpha for {ticker}")
     data = r.json()
     return {"ticker": ticker, "ratings": data}
 
@@ -471,7 +475,11 @@ def mboum_congress_trades(ticker=None):
         headers={"X-RapidAPI-Key": key, "X-RapidAPI-Host": "mboum-finance.p.rapidapi.com"},
         timeout=10,
     )
+    if r.status_code in (403, 429):
+        raise ValueError(f"Mboum returned {r.status_code} — access denied or rate limited")
     r.raise_for_status()
+    if not r.text.strip():
+        raise ValueError(f"Empty response from Mboum for {ticker}")
     data = r.json()
     return {"ticker": ticker, "congress_trades": data}
 
@@ -578,8 +586,8 @@ def stocktwits_sentiment(ticker):
     messages = data.get("messages", [])
     if not messages:
         raise ValueError(f"StockTwits returned no messages for {ticker}")
-    bullish = sum(1 for m in messages if m.get("entities", {}).get("sentiment", {}).get("basic") == "Bullish")
-    bearish = sum(1 for m in messages if m.get("entities", {}).get("sentiment", {}).get("basic") == "Bearish")
+    bullish = sum(1 for m in messages if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bullish")
+    bearish = sum(1 for m in messages if ((m.get("entities") or {}).get("sentiment") or {}).get("basic") == "Bearish")
     total_with_sentiment = bullish + bearish
     bull_pct = (bullish / total_with_sentiment * 100) if total_with_sentiment > 0 else 50
     return {
